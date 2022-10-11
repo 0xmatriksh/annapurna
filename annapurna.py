@@ -11,12 +11,10 @@ try:
     with open(f"{search_q}.json", "r") as openfile:
         json_object = json.load(openfile)
         prev_l = len(json_object)
+        result = json_object # to populate with the data of previously collected data
 except:
     pass
-
-# to populate with the data of previously collected data
-if prev_l > 0:
-    result = json_object
+    
 
 while len(result) < 30:
 
@@ -42,7 +40,6 @@ while len(result) < 30:
     except Exception as e:
         break
 
-print(len(result))
 json_obj = json.dumps(result)
 
 with open(f"{search_q}.json", "w") as outfile:
