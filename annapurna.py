@@ -15,7 +15,7 @@ try:
 except:
     pass
 
-page = int(prev_l / 10) + 1
+page = (prev_l // 10) + 1
 
 # print(page)
 
