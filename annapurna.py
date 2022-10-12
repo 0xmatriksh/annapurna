@@ -5,6 +5,7 @@ search_q = input("Enter query : ")  # get the search query from user
 result = []  # store the articles data in this list
 page = 1  # page count
 prev_l = 0  # to count number of already stored data
+rem = 0
 
 # to load the already collected data in previous request if any
 try:
@@ -15,12 +16,17 @@ try:
 except:
     pass
 
-page = (prev_l // 10) + 1
+page = prev_l // 10 + 1
+
+# rem to not add duplicate data if not end in 10X number
+rem = prev_l % 10
 
 # print(page)
 
 while len(result) < 30:
 
+    if rem != 0:
+        break
     url = f"https://bg.annapurnapost.com/api/search?title={search_q}&page={page}"
 
     res = requests.get(url).json()
